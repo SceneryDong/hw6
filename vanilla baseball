@@ -23,15 +23,7 @@ function draw() {
 
   ballX.push(random(50, 350))
 
-  rect(cartX, height - 40, 90, 40)
 
-  if (keyIsDown(RIGHT_ARROW)) {
-    cartX = cartX + cartSpeed
-  }
-
-  if (keyIsDown(LEFT_ARROW)) {
-    cartX = cartX - cartSpeed
-  }
 
 
   if (ballY > 400) {
@@ -46,7 +38,7 @@ function draw() {
   //   cartSpeed = cartSpeed + 0.5
   // }
 
-
+  noStroke()
   ellipse(ballX[i], ballY, 40)
 
 
@@ -54,9 +46,27 @@ function draw() {
   ballY = ballY + ballSpeed
 
 
+  rect(cartX, height - 40, 90, 40)
+
+  if (keyIsDown(RIGHT_ARROW)) {
+    cartX = cartX + cartSpeed
+  }
+
+  if (keyIsDown(LEFT_ARROW)) {
+    cartX = cartX - cartSpeed
+  }
+
+  if (ballY > 400) {
+    if (cartX < ballX[i] < cartX + 90) {
+      mySound.play()
+    }
+  }
+
+
   // if (ballY>400&&ballX[i]<cartX||ballX[i]>cartX+90) {
   //     textSize(20);
   //     text('Game over', 200, 200);
+  // mySound2.play()
   //     noLoop();
   //   } 
 
